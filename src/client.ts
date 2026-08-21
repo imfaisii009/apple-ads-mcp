@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { basename } from "node:path";
 import {
   getAccessToken,
   loadCredentialsFromEnv,
@@ -42,8 +44,13 @@ export type AdsResponse = {
 export function contextHeaderValue(adAccountId: string): string {
   const raw = String(adAccountId).trim();
   if (!raw) return "";
-  // Already a full context string — pass it through untouched.
-  if (raw.includes("=")) return raw;
+  // Already a well-formed context string: pass it through untouched.
+  if (/^adAccountId=\d+;?$/.test(raw)) return raw.endsWith(";") ? raw : `${raw};`;
+  if (!/^\d+$/.test(raw)) {
+    throw new Error(
+      `Invalid ad account ID: ${JSON.stringify(raw)}. Expected a numeric ID, or a context string like "adAccountId=1234567;". Use the acls operation to list the ad accounts your credentials can reach.`,
+    );
+  }
   return `adAccountId=${raw};`;
 }
 
@@ -56,7 +63,7 @@ export function defaultAdAccountId(): string {
   );
 }
 
-function fillPath(path: string, params?: Record<string, string>): string {
+export function fillPath(path: string, params?: Record<string, string>): string {
   if (!params) return path;
   return path.replace(/\{([^}]+)\}/g, (_, name: string) => {
     const v = params[name];
@@ -128,6 +135,44 @@ function decodeBody(buf: Buffer, contentType: string | null): unknown {
   };
 }
 
+/**
+ * Turn a JSON body into multipart/form-data. An MCP client can only send JSON,
+ * so a file part arrives as either { path } to read from disk or
+ * { base64, filename?, contentType? }.
+ */
+function buildFormData(body: Record<string, unknown>): FormData {
+  const form = new FormData();
+  for (const [key, value] of Object.entries(body)) {
+    if (value === undefined || value === null) continue;
+
+    if (typeof value === "object" && !Array.isArray(value)) {
+      const part = value as Record<string, unknown>;
+      const type =
+        typeof part.contentType === "string" ? part.contentType : undefined;
+
+      if (typeof part.path === "string") {
+        const bytes = readFileSync(part.path);
+        const name =
+          typeof part.filename === "string" ? part.filename : basename(part.path);
+        form.append(key, new Blob([bytes], type ? { type } : undefined), name);
+        continue;
+      }
+      if (typeof part.base64 === "string") {
+        const bytes = Buffer.from(part.base64, "base64");
+        const name =
+          typeof part.filename === "string" ? part.filename : key;
+        form.append(key, new Blob([bytes], type ? { type } : undefined), name);
+        continue;
+      }
+      form.append(key, JSON.stringify(value));
+      continue;
+    }
+
+    form.append(key, String(value));
+  }
+  return form;
+}
+
 export async function adsRequest(
   opts: AdsRequestOptions,
 ): Promise<AdsResponse> {
@@ -146,6 +191,9 @@ export async function adsRequest(
     ) {
       bodyInit = opts.body as BodyInit;
       if (opts.contentType) bodyHeaders["Content-Type"] = opts.contentType;
+    } else if (opts.contentType?.startsWith("multipart/form-data")) {
+      // Let fetch set Content-Type so it carries the multipart boundary.
+      bodyInit = buildFormData(opts.body as Record<string, unknown>);
     } else {
       bodyHeaders["Content-Type"] = opts.contentType || "application/json";
       bodyInit = JSON.stringify(opts.body);
@@ -157,13 +205,14 @@ export async function adsRequest(
   );
 
   const send = async (token: string): Promise<Response> => {
+    // Caller headers first so auth and content headers always win.
     const headers: Record<string, string> = {
+      ...(opts.headers ?? {}),
       Authorization: `Bearer ${token}`,
       Accept: opts.accept || "application/json",
       ...bodyHeaders,
     };
     if (context) headers[CONTEXT_HEADER] = context;
-    Object.assign(headers, opts.headers ?? {});
 
     return fetch(url, {
       method: opts.method.toUpperCase(),

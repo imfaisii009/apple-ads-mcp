@@ -22,6 +22,7 @@ import {
   adsRequest,
   contextHeaderValue,
   defaultAdAccountId,
+  fillPath,
   formatToolResult,
 } from "./client.js";
 import {
@@ -90,11 +91,15 @@ function executeOperation(
   const dryRun = args._dryRun === true;
 
   if (dryRun) {
+    // Resolve the path the same way a real call would, so a dry run catches
+    // a missing path param instead of quietly passing.
+    const resolvedPath = fillPath(tool.path, pathParams);
     return jsonText({
       dryRun: true,
       operationId: tool.operationId,
       method: tool.method,
       path: tool.path,
+      resolvedPath,
       pathParams,
       query,
       headers,
@@ -102,7 +107,9 @@ function executeOperation(
       contentType: tool.contentType,
       accept: tool.accept || "application/json",
       adAccountId: resolvedAdAccountId || null,
-      xApContext: contextHeaderValue(resolvedAdAccountId) || null,
+      xApContext: resolvedAdAccountId
+        ? contextHeaderValue(resolvedAdAccountId)
+        : null,
     });
   }
 

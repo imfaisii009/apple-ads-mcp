@@ -172,9 +172,12 @@
                     "nullable": true
                   },
                   "resourceType": {
-                    "type": "object",
-                    "properties": {},
-                    "required": []
+                    "type": "string",
+                    "enum": [
+                      "CONTENT_PROVIDER",
+                      "BUSINESS_BRAND"
+                    ],
+                    "description": "AdvertiserResourceType"
                   }
                 },
                 "description": "DelegationUpdate"
@@ -273,25 +276,35 @@
               "type": "object",
               "properties": {
                 "bidStrategyType": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MANUAL_CPT",
+                    "MAX_CONVERSIONS",
+                    "MANUAL_CPM",
+                    "MAX_ENGAGEMENTS"
+                  ],
+                  "description": "BidStrategyType"
                 },
                 "bidStrategyGoal": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "IMPRESSION",
+                    "INSTALL",
+                    "TAP"
+                  ],
+                  "description": "BidStrategyGoal"
                 },
                 "bid": {
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -309,12 +322,13 @@
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -330,72 +344,282 @@
               "properties": {
                 "country": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "adminArea": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "locality": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "postalCode": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "deviceClass": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "minAge": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "maxAge": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "gender": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "appCategory": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "appDownloader": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "daypart": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "radius": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "locationGroup": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "travelIntent": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 }
               },
@@ -679,25 +903,35 @@
               "type": "object",
               "properties": {
                 "bidStrategyType": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MANUAL_CPT",
+                    "MAX_CONVERSIONS",
+                    "MANUAL_CPM",
+                    "MAX_ENGAGEMENTS"
+                  ],
+                  "description": "BidStrategyType"
                 },
                 "bidStrategyGoal": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "IMPRESSION",
+                    "INSTALL",
+                    "TAP"
+                  ],
+                  "description": "BidStrategyGoal"
                 },
                 "bid": {
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -715,12 +949,13 @@
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -736,72 +971,282 @@
               "properties": {
                 "country": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "adminArea": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "locality": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "postalCode": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "deviceClass": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "minAge": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "maxAge": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "gender": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "appCategory": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "appDownloader": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "daypart": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "radius": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "locationGroup": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 },
                 "travelIntent": {
                   "type": "object",
-                  "properties": {},
+                  "properties": {
+                    "include": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "exclude": {
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
                   "required": []
                 }
               },
@@ -1586,18 +2031,35 @@
           "type": "object",
           "properties": {
             "file": {
-              "type": "string",
-              "description": "Image file (PNG, JPG, or HEIC)",
-              "format": "binary"
+              "type": "object",
+              "description": "Image file (PNG, JPG, or HEIC). Pass { \"path\": \"/abs/path/to/file\" } to upload from disk, or { \"base64\": \"...\", \"filename\": \"name.png\", \"contentType\": \"image/png\" }.",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "description": "Absolute path to the file on this machine"
+                },
+                "base64": {
+                  "type": "string",
+                  "description": "File bytes, base64 encoded"
+                },
+                "filename": {
+                  "type": "string"
+                },
+                "contentType": {
+                  "type": "string"
+                }
+              }
             },
             "promotedObjectId": {
               "type": "string",
               "description": "Generic identifier for the promoted object (e.g., brandId for a Business Brand)"
             },
             "promotedObjectType": {
-              "type": "object",
-              "properties": {},
-              "required": []
+              "type": "string",
+              "description": "Type of promoted object. Only BUSINESS_BRAND is supported by this endpoint.",
+              "enum": [
+                "BUSINESS_BRAND"
+              ]
             }
           },
           "required": [
@@ -2061,12 +2523,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2075,12 +2543,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2089,12 +2563,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2106,25 +2586,35 @@
               "type": "object",
               "properties": {
                 "bidStrategyType": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MANUAL_CPT",
+                    "MAX_CONVERSIONS",
+                    "MANUAL_CPM",
+                    "MAX_ENGAGEMENTS"
+                  ],
+                  "description": "BidStrategyType"
                 },
                 "bidStrategyGoal": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "IMPRESSION",
+                    "INSTALL",
+                    "TAP"
+                  ],
+                  "description": "BidStrategyGoal"
                 },
                 "bid": {
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -2548,12 +3038,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2562,12 +3058,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2576,12 +3078,18 @@
                   "type": "object",
                   "properties": {
                     "include": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     },
                     "exclude": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "array",
+                      "nullable": true,
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "required": []
@@ -2593,25 +3101,35 @@
               "type": "object",
               "properties": {
                 "bidStrategyType": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MANUAL_CPT",
+                    "MAX_CONVERSIONS",
+                    "MANUAL_CPM",
+                    "MAX_ENGAGEMENTS"
+                  ],
+                  "description": "BidStrategyType"
                 },
                 "bidStrategyGoal": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "IMPRESSION",
+                    "INSTALL",
+                    "TAP"
+                  ],
+                  "description": "BidStrategyGoal"
                 },
                 "bid": {
                   "type": "object",
                   "properties": {
                     "amount": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
                     },
                     "currency": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                      "nullable": true
                     }
                   },
                   "required": [
@@ -2845,19 +3363,29 @@
               "description": "Key-value query options",
               "properties": {
                 "needTotals": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "true",
+                    "false"
+                  ],
+                  "description": "Skip the expensive COUNT query when set to \"false\". Pagination.totalCount will be 0 in the response."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for eventTime filters. UTC — filter values are in UTC (default). ORTZ — filter values are in the org's configured timezone; converted to UTC server-side."
                 },
                 "metadata": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "none",
+                    "latest",
+                    "snapshot"
+                  ],
+                  "description": "Controls which entity metadata is included in change detail responses. none — no metadata. latest — join current entity_meta (may differ from time of change). snapshot — use metadata captured at snapshot time."
                 }
               }
             }
@@ -2934,12 +3462,12 @@
                   "type": "object",
                   "properties": {
                     "adamId": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "nullable": true
                     },
                     "productPageId": {
-                      "type": "object",
-                      "additionalProperties": true
+                      "type": "string",
+                      "nullable": true
                     }
                   },
                   "required": []
@@ -3443,14 +3971,19 @@
                   "description": "End date in YYYY-MM-DD format."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC"
+                  ],
+                  "description": "Fixed to UTC. Not user-configurable."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "DAILY",
+                    "WEEKLY_SUN_SAT"
+                  ],
+                  "description": "DAILY: daily aggregation, uses day date field. WEEKLY_SUN_SAT: fixed weekly aggregation (Sunday-Saturday), uses week date field."
                 }
               },
               "required": [
@@ -3477,9 +4010,12 @@
               "description": "Report options for impression share queries.",
               "properties": {
                 "impressionShareReportType": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "FIRST_SLOT",
+                    "ALL_SLOTS"
+                  ],
+                  "description": "FIRST_SLOT: impression share and metrics for the first (top) ad position only. ALL_SLOTS: impression share and metrics aggregated across all ad positions."
                 }
               }
             }
@@ -3601,14 +4137,19 @@
                   "description": "End date. For WEEKLY_SUN_SAT: YYYY-MM-DD format. For MONTHLY: YYYY-MM-DD format."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC"
+                  ],
+                  "description": "Fixed to UTC. Not user-configurable."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "WEEKLY_SUN_SAT",
+                    "MONTHLY"
+                  ],
+                  "description": "WEEKLY_SUN_SAT: fixed weekly reports (Sunday-Saturday). Generated Mondays at 07:00 UTC. Rolling 65-week retention. MONTHLY: calendar month snapshots. Refreshes on the 5th of each month UTC. Rolling 15-month retention."
                 }
               },
               "required": [
@@ -3689,24 +4230,45 @@
                     "type": "object",
                     "properties": {
                       "adGroupId": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "number"
                       },
                       "text": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string"
                       },
                       "matchType": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "EXACT",
+                          "BROAD",
+                          "PHRASE",
+                          "CATEGORY"
+                        ],
+                        "description": "KeywordMatchType"
                       },
                       "bid": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "amount": {
+                            "type": "string",
+                            "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
+                          },
+                          "currency": {
+                            "type": "string",
+                            "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "amount"
+                        ]
                       },
                       "status": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "ENABLED",
+                          "PAUSED"
+                        ],
+                        "description": "KeywordStatus"
                       }
                     },
                     "required": [
@@ -3773,16 +4335,32 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "number"
                       },
                       "bid": {
                         "type": "object",
-                        "additionalProperties": true
+                        "properties": {
+                          "amount": {
+                            "type": "string",
+                            "description": "The monetary value in the specified currency. The API uses amount whenever a currency value is necessary. The string can contain up to two decimal digits."
+                          },
+                          "currency": {
+                            "type": "string",
+                            "description": "The organization’s default currency that is set up in the Apple Search Ads UI.",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "amount"
+                        ]
                       },
                       "status": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "ENABLED",
+                          "PAUSED"
+                        ],
+                        "description": "KeywordStatus"
                       }
                     },
                     "required": [
@@ -4949,24 +5527,33 @@
                     "type": "object",
                     "properties": {
                       "campaignId": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "number",
+                        "nullable": true
                       },
                       "adGroupId": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "number",
+                        "nullable": true
                       },
                       "text": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string"
                       },
                       "matchType": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "EXACT",
+                          "BROAD",
+                          "PHRASE",
+                          "CATEGORY"
+                        ],
+                        "description": "KeywordMatchType"
                       },
                       "status": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "ENABLED",
+                          "PAUSED"
+                        ],
+                        "description": "NegativeKeywordStatus"
                       }
                     },
                     "required": [
@@ -5032,12 +5619,15 @@
                     "type": "object",
                     "properties": {
                       "id": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "number"
                       },
                       "status": {
-                        "type": "object",
-                        "additionalProperties": true
+                        "type": "string",
+                        "enum": [
+                          "ENABLED",
+                          "PAUSED"
+                        ],
+                        "description": "NegativeKeywordStatus"
                       }
                     },
                     "required": [
@@ -6721,14 +7311,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -6899,14 +7497,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7077,14 +7683,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7255,14 +7869,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7433,14 +8055,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7606,14 +8236,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7778,14 +8416,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -7950,14 +8596,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -8122,14 +8776,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -8294,14 +8956,22 @@
                   "description": "End date in YYYY-MM-DD format. For WEEKLY granularity: must be at least 14 days in the past. For MONTHLY granularity: must be at least 90 days in the past."
                 },
                 "timeZone": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "UTC",
+                    "ORTZ"
+                  ],
+                  "description": "Timezone for the report date range. ORTZ uses the ad account's local timezone. Note: UTC is not supported for the SEARCHTERM entity (both APPS and BRANDS)."
                 },
                 "granularity": {
-                  "type": "object",
-                  "properties": {},
-                  "required": []
+                  "type": "string",
+                  "enum": [
+                    "MONTHLY",
+                    "WEEKLY",
+                    "DAILY",
+                    "HOURLY"
+                  ],
+                  "description": "Time granularity for the report rows. HOURLY: Not supported for SEARCHTERM or AD entities. Date range must start within the last 7 days. DAILY: Date range start must be within the last 90 days. WEEKLY: Date range start within the last 365 days; end date at least 14 days in the past. MONTHLY: End date must be at least 90 days in the past."
                 }
               },
               "description": "TimeRange"
@@ -8552,9 +9222,12 @@
               }
             },
             "supplySource": {
-              "type": "object",
-              "properties": {},
-              "required": []
+              "type": "string",
+              "description": "Supply source context. **Required.** Case-insensitive.",
+              "enum": [
+                "APPSTORE",
+                "MAPS"
+              ]
             },
             "pagination": {
               "type": "object",

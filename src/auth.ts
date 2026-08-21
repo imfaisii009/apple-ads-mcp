@@ -1,4 +1,4 @@
-import { createPrivateKey, createSign } from "node:crypto";
+import { createHash, createPrivateKey, createSign } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { SignJWT, importPKCS8 } from "jose";
 
@@ -30,7 +30,12 @@ let cached:
   | undefined;
 
 function fingerprint(creds: AdsCredentials): string {
-  return `${creds.clientId}:${creds.teamId}:${creds.keyId}:${creds.privateKeyPem.length}`;
+  // Hash the key so a rotated key of the same length invalidates the cache.
+  const keyHash = createHash("sha256")
+    .update(creds.privateKeyPem)
+    .digest("hex")
+    .slice(0, 16);
+  return `${creds.clientId}:${creds.teamId}:${creds.keyId}:${keyHash}`;
 }
 
 /** Load credentials from env. Never logs secret material. */

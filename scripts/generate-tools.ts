@@ -158,19 +158,37 @@ function simplifySchema(
       return { type: "object", additionalProperties: true, description: `unresolved $ref ${name}` };
     }
     seen.add(name);
-    const out = simplifySchema(resolved, depth + 1, components, seen);
+    // Resolving a $ref is indirection, not nesting. Charging depth for it
+    // would exhaust the budget on Apple's heavily reused schemas.
+    const out = simplifySchema(resolved, depth, components, seen);
     seen.delete(name);
     if (!out.description) out.description = name;
     return out;
   }
 
   if (Array.isArray(schema.allOf)) {
+    const parts = (schema.allOf as JsonSchema[]).map((part) =>
+      // allOf is also indirection here, so it does not spend depth either.
+      simplifySchema(part, depth, components, seen),
+    );
+
+    // A single-part allOf is just a wrapper (Apple uses it to hang a
+    // description off a $ref). Keep the part itself, including enums.
+    const objectParts = parts.filter(
+      (s) => s.properties && typeof s.properties === "object",
+    );
+    if (objectParts.length === 0) {
+      const first = parts[0] ?? { type: "object", additionalProperties: true };
+      return schema.description
+        ? { ...first, description: schema.description as string }
+        : first;
+    }
+
     // shallow merge
     const merged: JsonSchema = { type: "object", properties: {}, required: [] as string[] };
     const props: Record<string, JsonSchema> = {};
     const req = new Set<string>();
-    for (const part of schema.allOf as JsonSchema[]) {
-      const s = simplifySchema(part, depth + 1, components, seen);
+    for (const s of parts) {
       if (s.properties && typeof s.properties === "object") {
         Object.assign(props, s.properties);
       }
@@ -294,6 +312,30 @@ function pickAccept(op: OpenApiOp): string | undefined {
   return keys[0];
 }
 
+/**
+ * An MCP client can only send JSON, so a binary multipart part is described as
+ * an object the server turns into a file: either a local path or base64 bytes.
+ */
+function describeBinaryParts(schema: JsonSchema): JsonSchema {
+  const props = schema.properties as Record<string, JsonSchema> | undefined;
+  if (!props) return schema;
+  for (const [key, value] of Object.entries(props)) {
+    if (value && value.type === "string" && (value as JsonSchema).format === "binary") {
+      props[key] = {
+        type: "object",
+        description: `${value.description || "File part"}. Pass { "path": "/abs/path/to/file" } to upload from disk, or { "base64": "...", "filename": "name.png", "contentType": "image/png" }.`,
+        properties: {
+          path: { type: "string", description: "Absolute path to the file on this machine" },
+          base64: { type: "string", description: "File bytes, base64 encoded" },
+          filename: { type: "string" },
+          contentType: { type: "string" },
+        },
+      };
+    }
+  }
+  return schema;
+}
+
 function buildDescription(
   op: OpenApiOp,
   method: string,
@@ -410,7 +452,9 @@ function generate(): void {
         const bodyContent = contentType ? op.requestBody?.content?.[contentType] : undefined;
         if (bodyContent?.schema) {
           properties["body"] = {
-            ...simplifySchema(bodyContent.schema, 0, components, new Set()),
+            ...describeBinaryParts(
+              simplifySchema(bodyContent.schema, 0, components, new Set()),
+            ),
             description: op.requestBody?.description || "Request body",
           };
         } else {

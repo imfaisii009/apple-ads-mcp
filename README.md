@@ -36,6 +36,7 @@ The catalog is generated from `openapi/apple-ads.openapi.json`, reconstructed fr
 - [Ad account scoping](#ad-account-scoping)
 - [Query, pagination and sorting](#query-pagination-and-sorting)
 - [Reports](#reports)
+- [Uploading creative assets](#uploading-creative-assets)
 - [Errors and rate limits](#errors-and-rate-limits)
 - [Dry run](#dry-run)
 - [Environment variables](#environment-variables)
@@ -101,7 +102,7 @@ All 99 operations across 28 resource tags. Run `ads_tags` at any time for the li
 1. Sign in at [ads.apple.com](https://ads.apple.com).
 2. Generate an EC private key locally (Apple never sees the private key itself):
    ```bash
-   openssl ecparam -genkey -name prime256v1 -noout -out private-key.pem
+   openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -out private-key.pem
    openssl ec -in private-key.pem -pubout -out public-key.pem
    ```
 3. Go to **Account Settings → API**, paste the contents of `public-key.pem` (including the `BEGIN`/`END` lines) into the Public Key field, and save.
@@ -360,6 +361,28 @@ Run `ads_schema { operation: "reports_appsCampaignsQuery" }` first to see the ex
 
 ---
 
+## Uploading creative assets
+
+`assets_upload` is the one operation that sends `multipart/form-data` instead of JSON. An MCP client can only send JSON, so the file part is described as an object and the server turns it into a real multipart upload:
+
+```jsonc
+{
+  "operation": "assets_upload",
+  "args": {
+    "adAccountId": "123456789",
+    "body": {
+      "file": { "path": "/Users/you/creative/hero.png", "contentType": "image/png" },
+      "promotedObjectId": "987654",
+      "promotedObjectType": "BUSINESS_BRAND"
+    }
+  }
+}
+```
+
+Use `{ "path": "/abs/path" }` to read a file from the machine running the server, or `{ "base64": "...", "filename": "hero.png", "contentType": "image/png" }` when the bytes are already in hand. Apple accepts PNG, JPG and HEIC here.
+
+---
+
 ## Errors and rate limits
 
 - Apple's response body is passed through intact. On a `4xx`/`5xx`, the agent sees Apple's own `error.code`, `error.message` and `error.details`, so it can read exactly what was rejected and self-correct.
@@ -462,7 +485,7 @@ Leave this **unset** in normal use — it exists for debugging the generated cat
 
 - **Nothing secret is stored in this repository.** Credentials come from environment variables only.
 - `.gitignore` blocks `*.p8`, `*.pem`, `PrivateKey_*.p8` and `.env*`.
-- The client secret is a short-lived-by-policy ES256 JWT you sign locally with your private key (valid up to 180 days, Apple's own maximum); Apple never receives the private key itself. The resulting access token lives 3600 seconds, is cached in memory only, and is refreshed with a 60-second margin before it expires — plus a one-time retry on a `401`.
+- The client secret is a short-lived-by-policy ES256 JWT you sign locally with your private key (valid up to 180 days, Apple's own maximum); Apple never receives the private key itself. The resulting access token is cached in memory only, and is refreshed with a 60-second margin before the `expires_in` Apple returns (currently 3600 seconds) — plus a one-time retry on a `401`.
 - Tool results never echo credentials back to the model.
 - The only network destinations are `APPLE_ADS_BASE_URL` (defaults to Apple's API host) and `APPLE_ADS_AUTH_BASE_URL` (defaults to Apple's OAuth host).
 - If you ever commit a private key by accident, rotate it in the Apple Ads UI immediately.
