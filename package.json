@@ -1,0 +1,83 @@
+{
+  "name": "apple-ads-mcp",
+  "version": "1.0.0",
+  "description": "Apple Ads Platform API MCP server \u2014 the full Apple Ads (Apple Search Ads) API exposed to Claude, Cursor and any MCP client through 4 token-efficient meta-tools.",
+  "license": "MIT",
+  "author": "imfaisii",
+  "homepage": "https://github.com/imfaisii/apple-ads-mcp#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imfaisii/apple-ads-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/imfaisii/apple-ads-mcp/issues"
+  },
+  "type": "module",
+  "bin": {
+    "apple-ads-mcp": "./src/index.ts",
+    "dp-ads": "./src/index.ts"
+  },
+  "files": [
+    "src",
+    "scripts",
+    "generated",
+    "openapi",
+    "docs",
+    "mcp.example.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "apple-ads",
+    "apple-search-ads",
+    "apple-ads-platform-api",
+    "search-ads",
+    "apple",
+    "ios",
+    "app-store",
+    "advertising",
+    "ad-campaigns",
+    "campaign-management",
+    "aso",
+    "user-acquisition",
+    "apple-maps-ads",
+    "claude",
+    "claude-code",
+    "claude-desktop",
+    "cursor",
+    "anthropic",
+    "ai-agent",
+    "llm-tools",
+    "openapi",
+    "bun",
+    "typescript",
+    "keywords",
+    "bidding",
+    "ad-groups",
+    "creatives",
+    "ads-reporting"
+  ],
+  "scripts": {
+    "generate": "bun run scripts/generate-tools.ts",
+    "start": "bun run src/index.ts",
+    "smoke": "bun run scripts/smoke.ts",
+    "typecheck": "tsc --noEmit",
+    "live": "bun run scripts/live-check.ts",
+    "docs": "bun run scripts/build-docs-index.ts"
+  },
+  "engines": {
+    "bun": ">=1.1.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1",
+    "jose": "^6.0.11",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.2"
+  }
+}

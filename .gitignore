@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# secrets — never commit API keys or Apple .p8 private keys
+.env
+.env.*
+!.env.example
+*.p8
+*.pem
+PrivateKey_*.p8
+**/*.p8
+
+# local / OS
+.DS_Store
+*.log
+dist/
+.turbo/
+.claude/
+*.tsbuildinfo
+coverage/
+.idea/
+.vscode/

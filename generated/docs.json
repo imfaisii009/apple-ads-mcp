@@ -1,0 +1,502 @@
+{
+  "generatedAt": "2026-08-21T05:02:34.748Z",
+  "source": "https://developer.apple.com/documentation/apple-ads-platform-api",
+  "count": 99,
+  "endpoints": {
+    "GET /me": {
+      "title": "Get Me Details",
+      "abstract": "Return the user ID and organization ID of the authenticated API caller.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-current-user-details"
+    },
+    "GET /acls": {
+      "title": "Get User ACL",
+      "abstract": "Return the ad accounts and roles accessible to the authenticated API caller.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-user-acls"
+    },
+    "GET /orgs/{id}": {
+      "title": "Get Org by ID",
+      "abstract": "Retrieve the details of a specific organization by its ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-orgs-_id_"
+    },
+    "POST /ad-accounts": {
+      "title": "Create Ad Accounts",
+      "abstract": "Create a new ad account under a specified organization.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-ad-accounts"
+    },
+    "GET /ad-accounts/{id}": {
+      "title": "Get Ad Account by ID",
+      "abstract": "Retrieve the full details of a specific ad account by its ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-ad-accounts-_id_"
+    },
+    "PUT /ad-accounts/{id}": {
+      "title": "Update Ad Accounts",
+      "abstract": "Update an ad account’s name or delegations.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-ad-accounts-_id_"
+    },
+    "GET /advertiser-resources": {
+      "title": "Get Advertiser Resources",
+      "abstract": "Retrieve the advertiser resources available to your organization, filtered by resource type.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-advertiser-resources"
+    },
+    "GET /search/apps": {
+      "title": "Search for Apps",
+      "abstract": "Search the App Store for apps matching the supplied criteria and return app details.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/searches-for-a-list-of-apps"
+    },
+    "GET /apps/{adamId}": {
+      "title": "Get App Details by Adam ID",
+      "abstract": "Retrieve application details for a specific Adam ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-details-by-adam-id"
+    },
+    "POST /metadata/apps/supported-languages/query": {
+      "title": "Query Supported App Languages",
+      "abstract": "Query countries and regions to discover the ad-supported languages available in each market.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-supported-app-languages"
+    },
+    "POST /eligibilities/apps/query": {
+      "title": "Check App Eligibility",
+      "abstract": "Check whether apps are eligible to run on certain Apple Ads placements and in specific countries or regions.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/find-apps-eligibilities"
+    },
+    "POST /rejection-reasons/apps/query": {
+      "title": "Query Rejection Reasons",
+      "abstract": "Query ad creative rejection reasons for apps and return why each ad creative failed approval.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/find-rejection-reasons"
+    },
+    "GET /rejection-reasons/apps/{rejectionReasonId}": {
+      "title": "Get Rejection Reasons",
+      "abstract": "Retrieve the details of an ad creative rejection reason by ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/gets-rejection-reasons-by-id"
+    },
+    "POST /business-brands/query": {
+      "title": "Query Brands",
+      "abstract": "Retrieve a paginated list of brands using filters and sorting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-brands"
+    },
+    "GET /business-brands/{id}": {
+      "title": "Get Brand by ID",
+      "abstract": "Retrieve a single brand by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-by-id"
+    },
+    "POST /business-categories/query": {
+      "title": "Query Business Categories",
+      "abstract": "Retrieve a paginated list of business categories using filters and sorting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-categories"
+    },
+    "GET /business-categories/{id}": {
+      "title": "Get Business Category",
+      "abstract": "Retrieve a single business category by its identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-category-by-id"
+    },
+    "POST /rejection-reasons/business-brands/query": {
+      "title": "Query Rejection Reasons for Brands",
+      "abstract": "Query paginated policy assignment rejection reason details.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-policy-assignments-(rejection-reasons)-for-external-consumers"
+    },
+    "POST /location-groups": {
+      "title": "Create Location Group",
+      "abstract": "Create a named group of locations for geographic targeting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/create-location-group"
+    },
+    "POST /location-groups/query": {
+      "title": "Query Location Groups",
+      "abstract": "Retrieve a paginated list of location groups using filters and sorting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-location-groups"
+    },
+    "GET /location-groups/{id}": {
+      "title": "Get Location Group",
+      "abstract": "Retrieve a single location group by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-location-group-by-id"
+    },
+    "PUT /location-groups/{id}": {
+      "title": "Update Location Group",
+      "abstract": "Update an existing location group’s name, rules, or location membership.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/update-location-group"
+    },
+    "DELETE /location-groups/{id}": {
+      "title": "Delete Location Group",
+      "abstract": "Delete a location group by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-location-group"
+    },
+    "POST /locations/query": {
+      "title": "Query for Locations",
+      "abstract": "Retrieve a paginated list of business locations using filters and sorting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-locations"
+    },
+    "GET /locations/{id}": {
+      "title": "Get a Location",
+      "abstract": "Retrieve a single business location by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-location-by-id"
+    },
+    "POST /campaigns": {
+      "title": "Create a Campaign",
+      "abstract": "Create a new advertising campaign with a promoted object, budget, targeting, and bid strategy configuration.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-campaigns"
+    },
+    "POST /campaigns/query": {
+      "title": "Query Campaigns",
+      "abstract": "Query campaigns using filters, sorting, and pagination.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-campaigns-query"
+    },
+    "GET /campaigns/{id}": {
+      "title": "Get a Campaign",
+      "abstract": "Retrieve a single campaign by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-campaigns-_id_"
+    },
+    "PUT /campaigns/{id}": {
+      "title": "Update a Campaign",
+      "abstract": "Update a campaign’s name, status, budget, targeting, or bid strategy.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-campaigns-_id_"
+    },
+    "DELETE /campaigns/{id}": {
+      "title": "Delete a Campaign",
+      "abstract": "Soft-delete a campaign by its unique identifier, cascading to its ad groups, keywords, and ads.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-campaigns-_id_"
+    },
+    "GET /campaigns/{id}/legacy-app-limited-status-reason-details": {
+      "title": "Get Legacy App Limited Status Reason Details",
+      "abstract": "Return a map of country or region codes to their associated limited-status reason for legacy app campaigns.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-campaigns-_id_-legacy-app-limited-status-reason-details"
+    },
+    "POST /adgroups": {
+      "title": "Create an Ad Group",
+      "abstract": "Create a new ad group within a campaign, defining targeting, bid strategy, and scheduling for a set of ads.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-adgroups"
+    },
+    "POST /adgroups/query": {
+      "title": "Query Ad Groups",
+      "abstract": "Query ad groups using filters, sorting, and pagination.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-adgroups-query"
+    },
+    "GET /adgroups/{id}": {
+      "title": "Get an Ad Group",
+      "abstract": "Retrieve a single ad group by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-adgroups-_id_"
+    },
+    "PUT /adgroups/{id}": {
+      "title": "Update an Ad Group",
+      "abstract": "Update an existing ad group’s name, status, bid strategy, targeting, or scheduling.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-adgroups-_id_"
+    },
+    "DELETE /adgroups/{id}": {
+      "title": "Delete an Ad Group",
+      "abstract": "Soft-delete an ad group by its unique identifier, along with all ads and keywords associated with it.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-adgroups-_id_"
+    },
+    "POST /search/geo": {
+      "title": "Query Geo Locations",
+      "abstract": "Search for geographic locations by entity type and ID for use in ad group geo targeting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/gets-a-list-of-geo-locations"
+    },
+    "GET /search/geo": {
+      "title": "Search Geo Locations",
+      "abstract": "Search for geographic locations for use in ad group geo targeting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/searches-for-a-list-of-geo-locations"
+    },
+    "POST /keywords": {
+      "title": "Create a Keyword",
+      "abstract": "Create a new keyword in an ad group, setting the match type and optional bid amount.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-keywords"
+    },
+    "POST /keywords/query": {
+      "title": "Query Keywords",
+      "abstract": "Query keywords using structured filters, sorting, and pagination.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-keywords-query"
+    },
+    "GET /keywords/{id}": {
+      "title": "Get a Keyword",
+      "abstract": "Retrieve a single keyword by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-keywords-_id_"
+    },
+    "PUT /keywords/{id}": {
+      "title": "Update a Keyword",
+      "abstract": "Update a keyword’s bid amount or status to optimize spend and control delivery for that term.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-keywords-_id_"
+    },
+    "DELETE /keywords/{id}": {
+      "title": "Delete a Keyword",
+      "abstract": "Soft-delete a keyword by ID, setting its deleted field to true and stopping bids on that term.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-keywords-_id_"
+    },
+    "POST /negative-keywords": {
+      "title": "Create a Negative Keyword",
+      "abstract": "Create a negative keyword at the campaign or ad group level to prevent ads from showing for unwanted search terms.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-negative-keywords"
+    },
+    "POST /negative-keywords/query": {
+      "title": "Query Negative Keywords",
+      "abstract": "Query negative keywords using structured filters, sorting, and pagination.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-negative-keywords-query"
+    },
+    "GET /negative-keywords/{id}": {
+      "title": "Get a Negative Keyword",
+      "abstract": "Retrieve a single negative keyword by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-negative-keywords-_id_"
+    },
+    "PUT /negative-keywords/{id}": {
+      "title": "Update a Negative Keyword",
+      "abstract": "Update a negative keyword’s status to enable or pause its search term exclusion.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-negative-keywords-_id_"
+    },
+    "DELETE /negative-keywords/{id}": {
+      "title": "Delete a Negative Keyword",
+      "abstract": "Soft-delete a negative keyword by ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-negative-keywords-_id_"
+    },
+    "POST /ads": {
+      "title": "Create an Ad",
+      "abstract": "Creates a new ad that links an ad creative to an ad group for delivery.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-ads"
+    },
+    "POST /ads/query": {
+      "title": "Query Ads",
+      "abstract": "Searches and filters ads using structured query criteria including field filters, sorting, and pagination.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-ads-query"
+    },
+    "GET /ads/{id}": {
+      "title": "Get an Ad",
+      "abstract": "Retrieves a single ad by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-ads-_id_"
+    },
+    "PUT /ads/{id}": {
+      "title": "Update an Ad",
+      "abstract": "Updates the name or status of an existing ad by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-ads-_id_"
+    },
+    "DELETE /ads/{id}": {
+      "title": "Delete an Ad",
+      "abstract": "Soft-deletes an ad by its unique identifier, stopping delivery and removing it from active results.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-ads-_id_"
+    },
+    "POST /creatives": {
+      "title": "Create an Ad Creative",
+      "abstract": "Add a new ad creative that defines the visual presentation and tap destination for an ad.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-creatives"
+    },
+    "POST /creatives/query": {
+      "title": "Query Ad Creatives",
+      "abstract": "Retrieve ad creatives that match structured filter, sort, and pagination criteria.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-creatives-query"
+    },
+    "GET /creatives/{id}": {
+      "title": "Get an Ad Creative",
+      "abstract": "Fetch a single ad creative by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-creatives-_id_"
+    },
+    "PUT /creatives/{id}": {
+      "title": "Update an Ad Creative",
+      "abstract": "Change an ad creative’s name or creative spec by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-creatives-_id_"
+    },
+    "DELETE /creatives/{id}": {
+      "title": "Delete an Ad Creative",
+      "abstract": "Remove an ad creative by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-creatives-_id_"
+    },
+    "POST /assets/upload": {
+      "title": "Upload Asset",
+      "abstract": "Upload a binary image file to create a new asset.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/upload-asset"
+    },
+    "POST /assets/query": {
+      "title": "Query Assets",
+      "abstract": "Retrieve a paginated list of creative assets using filters and sorting.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-assets"
+    },
+    "GET /assets/{id}": {
+      "title": "Get Asset",
+      "abstract": "Retrieve a single asset by its UUID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-asset-by-id"
+    },
+    "DELETE /assets/{id}": {
+      "title": "Delete Asset",
+      "abstract": "Soft-delete an asset by its UUID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-asset-by-id"
+    },
+    "POST /product-pages/query": {
+      "title": "Query Product Pages",
+      "abstract": "Queries App Store product pages available to your account.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-product-pages"
+    },
+    "GET /product-pages/{productPageId}": {
+      "title": "Get Product Page by ID",
+      "abstract": "Retrieves a specific Product Page (DPP, CPP, or PPO) by its unique UUID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-product-page-by-id"
+    },
+    "POST /product-pages/locale-details/query": {
+      "title": "Query Product Page Locale Details",
+      "abstract": "Queries the localized content associated with a custom product page.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-product-page-locale-details"
+    },
+    "POST /apps/{adamId}/locale-details/query": {
+      "title": "Query App Locale Details",
+      "abstract": "Return the default product page locale details for an app identified by its adamId.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-default-product-page-locale-details-by-adam-id"
+    },
+    "POST /keywords/bulk-create": {
+      "title": "Bulk Create Keywords",
+      "abstract": "Creates multiple keywords in a single request.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-keywords-bulk-create"
+    },
+    "POST /keywords/bulk-update": {
+      "title": "Bulk Update Keywords",
+      "abstract": "Updates multiple keywords in a single request.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-keywords-bulk-update"
+    },
+    "POST /negative-keywords/bulk-create": {
+      "title": "Bulk Create Negative Keywords",
+      "abstract": "Create multiple negative keywords in a single request.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-negative-keywords-bulk-create"
+    },
+    "POST /negative-keywords/bulk-update": {
+      "title": "Bulk Update Negative Keywords",
+      "abstract": "Update multiple negative keywords in a single request.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-negative-keywords-bulk-update"
+    },
+    "GET /shared-budgets/{id}": {
+      "title": "Get a Budget Order by ID",
+      "abstract": "Retrieves a single budget order by its ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-shared-budgets-_id_"
+    },
+    "POST /shared-budgets": {
+      "title": "Create a Budget Order",
+      "abstract": "Creates a budget order that can be assigned to campaigns within an ad account.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-shared-budgets"
+    },
+    "POST /shared-budgets/query": {
+      "title": "Query Budget Orders",
+      "abstract": "Returns a filtered, sorted, and paginated list of budget orders.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/post-shared-budgets-query"
+    },
+    "PUT /shared-budgets/{id}": {
+      "title": "Update a Budget Order",
+      "abstract": "Updates mutable fields of an existing budget order by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/put-shared-budgets-_id_"
+    },
+    "DELETE /shared-budgets/{id}": {
+      "title": "Delete a Budget Order",
+      "abstract": "Soft-deletes a budget order by its unique identifier.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/delete-shared-budgets-_id_"
+    },
+    "POST /reports/apps/campaigns/query": {
+      "title": "Campaigns Report",
+      "abstract": "Retrieve performance metrics for campaigns broken down by optional dimensions such as country, device class, or storefront.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-campaign-reports"
+    },
+    "POST /reports/apps/adgroups/query": {
+      "title": "Ad Groups Report",
+      "abstract": "Retrieve performance metrics for ad groups broken down by optional dimensions such as country, device class, or storefront.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-ad-group-reports"
+    },
+    "POST /reports/apps/ads/query": {
+      "title": "Ads Report",
+      "abstract": "Retrieve performance metrics for ads broken down by optional dimensions such as device class or country.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-ad-reports"
+    },
+    "POST /reports/apps/keywords/query": {
+      "title": "Keywords Report",
+      "abstract": "Retrieve performance metrics for keywords broken down by optional dimensions such as device class or country.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-keyword-reports"
+    },
+    "POST /reports/apps/searchterms/query": {
+      "title": "Search Terms Report",
+      "abstract": "Retrieve performance metrics for the actual search terms that triggered keyword matches, broken down by optional dimensions.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-app-search-term-reports"
+    },
+    "POST /reports/business-brands/campaigns/query": {
+      "title": "Campaigns Report (Brands)",
+      "abstract": "Retrieve performance metrics for Apple Maps campaigns broken down by optional dimensions such as country, device class, or storefront.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-campaign-reports"
+    },
+    "POST /reports/business-brands/adgroups/query": {
+      "title": "Ad Groups Report (Brands)",
+      "abstract": "Retrieve performance metrics for Apple Maps ad groups broken down by optional dimensions such as country, device class, or storefront.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-ad-group-reports"
+    },
+    "POST /reports/business-brands/ads/query": {
+      "title": "Ads Report (Brands)",
+      "abstract": "Retrieve performance metrics for Apple Maps ads broken down by optional dimensions such as device class or country.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-ad-reports"
+    },
+    "POST /reports/business-brands/keywords/query": {
+      "title": "Keywords Report (Brands)",
+      "abstract": "Retrieve performance metrics for Apple Maps keywords broken down by optional dimensions such as device class or country.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-keyword-reports"
+    },
+    "POST /reports/business-brands/searchterms/query": {
+      "title": "Search Terms Report (Brands)",
+      "abstract": "Retrieve performance metrics for the actual search terms that triggered keyword matches in Apple Maps campaigns, broken down by optional dimensions.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-brand-search-term-reports"
+    },
+    "POST /insights/apps/impression-share/query": {
+      "title": "Impression Share Query",
+      "abstract": "Retrieve impression share data showing how often your ads appear relative to total eligible impressions for a given search term and country.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-app-impression-share-data"
+    },
+    "POST /insights/apps/search-term-popularity/query": {
+      "title": "Search Term Popularity Query",
+      "abstract": "Retrieve the relative search volume ranking of search terms for a given App Store genre and country or region.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-app-search-term-popularity-data"
+    },
+    "POST /recommendations/target-cpas/query": {
+      "title": "Query Target CPA Recommendations",
+      "abstract": "Retrieve target cost-per-acquisition recommendations for campaigns using a Maximize Conversions bid strategy.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-target-cpa-recommendations"
+    },
+    "POST /recommendations/target-cpas/apply": {
+      "title": "Apply Target CPA Recommendations",
+      "abstract": "Apply one or more target CPA recommendations.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/apply-target-cpa-recommendations"
+    },
+    "POST /recommendations/target-cpas/dismiss": {
+      "title": "Dismiss Target CPA Recommendations",
+      "abstract": "Dismiss one or more target CPA recommendations without changing the campaign’s bid strategy.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/dismiss-target-cpa-recommendations"
+    },
+    "POST /recommendations/daily-budgets/query": {
+      "title": "Query Daily Budget Recommendations",
+      "abstract": "Retrieve daily budget recommendations for campaigns that may have more opportunities.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-daily-budget-recommendations"
+    },
+    "POST /recommendations/daily-budgets/apply": {
+      "title": "Apply Daily Budget Recommendations",
+      "abstract": "Apply one or more daily budget recommendations, updating the campaign’s daily budget to the suggested amount.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/apply-daily-budget-recommendations"
+    },
+    "POST /recommendations/daily-budgets/dismiss": {
+      "title": "Dismiss Daily Budget Recommendations",
+      "abstract": "Dismiss one or more daily budget recommendations without changing the campaign’s budget.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/dismiss-daily-budget-recommendations"
+    },
+    "POST /suggestions/keywords/query": {
+      "title": "Query Keyword Suggestions",
+      "abstract": "Query keyword suggestions based on search terms and App Store countries or regions using structured filters.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-keyword-suggestions"
+    },
+    "POST /suggestions/phrases/query": {
+      "title": "Query Phrase Suggestions",
+      "abstract": "Query phrase suggestions using either a discovery or search route based on the query type.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-phrase-suggestions"
+    },
+    "POST /suggestions/categories/query": {
+      "title": "Query Category Suggestions",
+      "abstract": "Query category suggestions for apps or brands using either a discovery or search route based on the query type.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-category-suggestions"
+    },
+    "POST /suggestions/target-cpas/query": {
+      "title": "Query Target CPA Suggestion",
+      "abstract": "Retrieve the recommended target CPA for a new Maximize Conversions campaign on the App Store.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-target-cpa-suggestion"
+    },
+    "POST /change-history/query": {
+      "title": "Query Change History",
+      "abstract": "Query audit summaries grouped by transaction across a specified time range.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/query-audit-summary-_-grouped-by-transaction"
+    },
+    "GET /change-history/{detailId}": {
+      "title": "Get Change History Detail",
+      "abstract": "Retrieve field-level before and after values for a single entity change by its detail ID.",
+      "url": "https://developer.apple.com/documentation/apple-ads-platform-api/get-change-details-by-detailid"
+    }
+  }
+}

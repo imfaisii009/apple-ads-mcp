@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "apple-ads": {
+      "command": "bun",
+      "args": [
+        "run",
+        "/ABS/PATH/to/apple-ads-mcp/src/index.ts"
+      ],
+      "env": {
+        "APPLE_ADS_CLIENT_ID": "SEARCHADS.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "APPLE_ADS_TEAM_ID": "SEARCHADS.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "APPLE_ADS_KEY_ID": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "APPLE_ADS_PRIVATE_KEY_PATH": "/ABS/PATH/to/PrivateKey.p8",
+        "APPLE_ADS_AD_ACCOUNT_ID": "1234567"
+      }
+    }
+  }
+}

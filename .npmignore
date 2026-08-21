@@ -1,0 +1,11 @@
+.github/
+scripts/smoke.ts
+scripts/live-check.ts
+*.p8
+*.pem
+.env*
+bun.lock
+CONTRIBUTING.md
+SECURITY.md
+CHANGELOG.md
+.claude/
